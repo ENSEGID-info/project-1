@@ -1,3 +1,5 @@
+import tkinter
+
 def etape1_main():
     print("Exécution de l'étape 1...")
     # Exemple : lecture d’un fichier ou génération de données
