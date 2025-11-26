@@ -14,9 +14,28 @@ df = pd.read_csv(r"H:\projet programmation\7ODM.txt",
                  engine="python") # indispensable pour espaces irréguliers
 
 
-df.columns = ["col1","col2","col3","col4","col5","col6","col7","col8","col9","col10","col11","col12","col13","col14","col15","col16","col17"]
+df.columns = ["Decimal_YR","East(m)","North(m)","Vert(m)","col5","col6","col7","col8","col9","col10","Time past J2000(s)","Annee","Mois","Jour","Heure","Minute","Seconde"]
 print(df)
+north = df["North(m)"]
+print(north)
 
+# graphique déplacement Nord
+plt.plot(df["Decimal_YR"], df["North(m)"]*100)
+plt.xlabel("Année")
+plt.ylabel("Déplacement Nord (cm)")
+plt.show()
+
+# graphique déplacement Est
+plt.plot(df["Decimal_YR"], df["East(m)"]*100)
+plt.xlabel("Année")
+plt.ylabel("Déplacement Est (cm)")
+plt.show()
+
+# Graphique déplacement Hauteur
+plt.plot(df["Decimal_YR"], df["Vert(m)"]*100)
+plt.xlabel("Année")
+plt.ylabel("Déplacement Vertical (cm)")
+plt.show()
 
 
 
