@@ -47,7 +47,7 @@ sismiques sur ces mouvements.
 
 	Sous-groupe C :
 		- Raphael Chapuis (@2Raph)
-		- Manon Chopin (Manon625)
+		- Manon Chopin (@Manon625)
 
 			OJECTIF : Récupérer les données de la station GPS via le site de la NASA. Ces valeurs sont enregistrées dans un document notepad à cause de la sécurité du site de la NASA, et sont stockées dans une variable.
 				  Tracer 3 graphiques à l'aide de ses données :
