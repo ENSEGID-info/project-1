@@ -11,6 +11,17 @@ fenetre = Tk()
 
 #affiche du texte
 label = Label(fenetre, text="Rentrez le nom du point gps")
-LASTlabel.pack() #permet de le faire apparaître
+label.pack() #permet de le faire apparaître
 
+# entrée
+value = StringVar() 
+value.set("texte par défaut")
+entree = Entry(fenetre, textvariable="string", width=30)
+entree.pack()
+
+# bouton
+bouton=Button(fenetre, text="Tracer", command=print('graph'))
+bouton.pack()
+
+##fin du pgm, affiche la fenêtre finale
 fenetre.mainloop()
