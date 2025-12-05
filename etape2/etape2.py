@@ -52,3 +52,92 @@ def etape2_main(data):
     result = max(data)
     return result
 
+#Modèle 3 D code 
+
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+import csv
+
+
+# # Création d'un tableau de 100 points entre -4*pi et 4*pi 
+# #ils veulent tracer une sorte de spirale à partir d'une sorte d'équation
+# theta = np.linspace(-4 * np.pi, 4 * np.pi, 100)
+# z = np.linspace(-2, 2, 100)  # Création du tableau de l'axe z entre -2 et 2
+# r = z**2 + 1
+# x = r * np.sin(theta)  # Création du tableau de l'axe x
+# y = r * np.cos(theta)  # Création du tableau de l'axe y
+
+#réccupération des données et lecture du fichier
+def lectureMesures(nomFich):
+# Lecture d'un fichier
+    f = open(nomFich)
+# Format csv
+    fcsv = csv.reader(f, delimiter=';')
+# Récupération des entêtes
+    for E in fcsv:
+        break
+# Récupération de la matrice des données quantitatives
+    x = []
+    y = []
+    z = []
+
+    for ligne in fcsv:
+        x.append(ligne[0])
+        y.append(ligne[1])
+        z.append(ligne[2])
+    
+    x = [float(a.replace(',', '.')) for a in x]
+    y = [float(b.replace(',', '.')) for b in y]
+    z = [float(c.replace(',', '.')) for c in z]
+    
+    
+        
+    # for a in x :
+    #     a=a.replace(",", ".")
+    #     a=float(a)
+        
+    # for b in y :
+    #     b=b.replace(",", ".")
+    #     b=float(b)
+        
+    # for c in z :
+    #     c=c.replace(",", ".")
+    #     c=float(c)
+        
+    return x, y, z
+
+        
+#     #     L = []
+#     #     m = len(ligne)
+#     #     for i in range(m):
+#     #         L.append(ligne[i])
+#     #     Q.append(ligne[m-1])
+#     #     LL.append(L)
+#     # #M = np.array(LL, dtype='int')
+#     # #Q = np.array(Q)
+# # Fermeture du fichier
+#     f.close()
+
+
+# #pour nous ce sera plutôt les tableaux de données réccuprés par le premier sous-groupe
+# x=[0.640316,0.640806,0.644217,0.645285,0.638222,0.638222,0.638477,0.637248] #longitude
+# y=[-0.209482,-0.207993,-0.208426,-0.200717,-0.204820,-0.204820,-0.201947,-0.205605] #latitude
+# z=[0.005802,0.008184 ,-0.010232,0.007881,0.019003,0.019003,0.042073 ,0.040877] #altitude
+
+x,y,z=lectureMesures('ODMgogogo.csv')
+facteur=1
+
+
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+ax.plot(x, y, [r*facteur for r in z], label='Courbe')
+
+ax.set_xlabel("X")
+ax.set_ylabel("Y")
+ax.set_zlabel("Z (exagérée)")
+
+plt.tight_layout()
+plt.show()
