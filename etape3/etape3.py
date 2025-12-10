@@ -1,48 +1,4 @@
-import pandas as pd # pour les tableaux
-import matplotlib.pyplot as plt # graphiques
-import tkinter # pour les interfaces graphiques utilisateurs
-import requests
-import io
 
-
-##
-def fonction(fichier):
-    df = pd.read_csv(fichier, 
-                     sep=r"\s+",
-                     comment="#",     # ignore les lignes commençant par #
-                     header=None,     # pas d'en-têtes dans le fichier
-                     engine="python") # indispensable pour espaces irréguliers
-    # transforme le fichier texte en dataframe
-    
-    df.columns = ["Decimal_YR","East(m)","North(m)","Vert(m)","col5","col6","col7","col8","col9","col10","Time past J2000(s)","Annee","Mois","Jour","Heure","Minute","Seconde"]
-    print(df)
-    # renomme les colonnes utiles 
-    north = df["North(m)"]
-    print(north)
-    
-    # graphique déplacement Nord
-    plt.plot(df["Decimal_YR"], df["North(m)"]*100, '+')
-    plt.xlabel("Année")
-    plt.ylabel("Déplacement Nord (cm)")
-    plt.show()
-    
-    # graphique déplacement Est
-    plt.plot(df["Decimal_YR"], df["East(m)"]*100, '+')
-    plt.xlabel("Année")
-    plt.ylabel("Déplacement Est (cm)")
-    plt.show()
-    
-    # Graphique déplacement Hauteur
-    plt.plot(df["Decimal_YR"], df["Vert(m)"]*100, '+')
-    plt.xlabel("Année")
-    plt.ylabel("Déplacement Vertical (cm)")
-    plt.show()
-
-
-fonction(r"H:\projet programmation\Stations\7ODM.series")
-
-
-########################################################################################################################################
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -92,6 +48,9 @@ def fonction(fichier):
 
 # Appel
 fonction(r"H:\projet programmation\Stations\7ODM.series")
+
+# ajouter des titres
+# expliquer concept de la sliding window + image/dessin
 
 
 ## Régression locale loess  ###########################################################################################################
