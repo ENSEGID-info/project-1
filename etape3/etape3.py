@@ -117,7 +117,10 @@ import numpy as np
 from statsmodels.nonparametric.smoothers_lowess import lowess
 
 
-def fonction(fichier):
+def graphes(value.get()):
+    nom_station= value.get()
+    fichier=f"E:\Stations\{nom_station}.series"
+    
     df = pd.read_csv(fichier, 
                      sep=r"\s+",
                      comment="#",
@@ -168,8 +171,7 @@ def fonction(fichier):
 
 
 # Appel
-fonction(r"H:\projet programmation\Stations\7ODM.series")
-
+graphes("7ODM")
 
 
 
