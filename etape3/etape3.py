@@ -102,7 +102,10 @@ def fonction(fichier):
                   "Année", "Déplacement Vertical (cm)")
 
 # Appel
-fonction(r"H:\projet programmation\Stations\7ODM.series")
+
+option = False
+if option = True :
+    fonction(r"H:\projet programmation\Stations\7ODM.series")
 
 
 # expliquer concept de la sliding window + image/dessin
@@ -118,7 +121,7 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 
 
 def graphes(value.get()):
-    nom_station= value.get()
+    nom_station = value.get()
     fichier=f"E:\Stations\{nom_station}.series"
     
     df = pd.read_csv(fichier, 
