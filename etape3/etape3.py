@@ -73,7 +73,7 @@ def fonction(fichier):
     # ---------------------------------------------------------
     # Fonction utilitaire : graphique + sliding window moyenne
     # ---------------------------------------------------------
-    def trace_sliding(x, y, xlabel, ylabel, window=100):
+    def trace_sliding(x, y, xlabel, ylabel, window=150):
         plt.figure()
 
         # Données brutes
@@ -103,7 +103,7 @@ def fonction(fichier):
 
 # Appel
 
-option = False
+option = True
 if option == True :
     fonction(r"H:\projet programmation\Stations\7ODM.series")
 
@@ -121,8 +121,8 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 
 
 def graphes(station):
-    nom_station = station
-    fichier=f"H:\projet programmation\Stations\{nom_station}.series"
+    #nom_station = station
+    fichier=f"H:\projet programmation\Stations\{station}.series"
     
     df = pd.read_csv(fichier, 
                      sep=r"\s+",
@@ -164,13 +164,13 @@ def graphes(station):
 
     # -------- Graphiques --------
     trace_loess(df["Decimal_YR"], df["North(m)"]*100,
-                "Année", "Déplacement Nord (cm)", frac=0.05)
+                "Année", "Déplacement Nord (cm)", frac=0.02)
 
     trace_loess(df["Decimal_YR"], df["East(m)"]*100,
-                "Année", "Déplacement Est (cm)", frac=0.05)
+                "Année", "Déplacement Est (cm)", frac=0.02)
 
     trace_loess(df["Decimal_YR"], df["Vert(m)"]*100,
-                "Année", "Déplacement Vertical (cm)", frac=0.05)
+                "Année", "Déplacement Vertical (cm)", frac=0.02)
 
 
 # Appel
