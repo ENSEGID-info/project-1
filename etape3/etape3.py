@@ -134,9 +134,8 @@ def graphes(station):
                   "col7","col8","col9","col10","Time past J2000(s)",
                   "Annee","Mois","Jour","Heure","Minute","Seconde"]
 
-    # ---------------------------------------------------------
     # Fonction utilitaire : graphique + régression locale LOESS
-    # ---------------------------------------------------------
+
     def trace_loess(x, y, xlabel, ylabel, frac=0.05):
         """
         frac = pourcentage de données utilisées dans chaque fenêtre locale
@@ -155,7 +154,6 @@ def graphes(station):
 
         plt.plot(x, loess_result, 'r-', linewidth=2, 
                  label=f"LOESS (frac={frac})")
-
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
         plt.legend()
@@ -165,13 +163,10 @@ def graphes(station):
     # -------- Graphiques --------
     trace_loess(df["Decimal_YR"], df["North(m)"]*100,
                 "Année", "Déplacement Nord (cm)", frac=0.02)
-
     trace_loess(df["Decimal_YR"], df["East(m)"]*100,
                 "Année", "Déplacement Est (cm)", frac=0.02)
-
     trace_loess(df["Decimal_YR"], df["Vert(m)"]*100,
                 "Année", "Déplacement Vertical (cm)", frac=0.02)
-
 
 # Appel
 graphes("7ODM")
