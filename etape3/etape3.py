@@ -5,27 +5,22 @@ import requests
 
 
 def telechargement():
-    BASE_URL = "https://sideshow.jpl.nasa.gov/pub/JPL_GPS_Timeseries/repro2018a/post/point/"
-    OUT_DIR = "stations"
+    BASE_URL = "https://sideshow.jpl.nasa.gov/pub/JPL_GPS_Timeseries/repro2018a/post/point/" # URL de l'emplacement des fichiers en ligne
+    OUT_DIR = "stations"  # dossier où télécharger les fichiers
     os.makedirs(OUT_DIR, exist_ok=True)
     
     print("Téléchargement de la liste des stations...")
     
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0"
-    }
+    }   # Spyder se fait passer pour un utilisateur Mozilla pour contourner certains problèmes d'accès
     
     # Ignore warnings SSL
     requests.packages.urllib3.disable_warnings()
-    
     page = requests.get(BASE_URL, headers=headers, verify=False)
     text = page.text
     
-    print("\n--- APERÇU DE LA PAGE REÇUE (normalement on doit voir des <a href=...>) ---")
-    print(text[:500])
-    print("--------------------------------\n")
-    
-    # Extraction simple
+    # Extraction des noms des fichiers de la forme XXXX.series dans une liste
     links = []
     for line in text.splitlines():
         line = line.strip()
@@ -36,8 +31,9 @@ def telechargement():
             if filename.endswith(".series"):
                 links.append(filename)
     
-    print(f"{len(links)} fichiers trouvés.")
+    print(f"{len(links)} fichiers trouvés.")  # affiche le nombre de fichiers trouvés
     
+    # télécharge les fichiers de la liste précédemment extraite
     for filename in links:
         print("Téléchargement :", filename)
         url = BASE_URL + filename
@@ -47,6 +43,7 @@ def telechargement():
     
     print("\nTerminé !")
     
+# option pour exécuter ou non la fonction précédente
 telechar = False
 
 if telechar == True :
