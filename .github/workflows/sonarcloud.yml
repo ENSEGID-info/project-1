@@ -17,6 +17,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Linter Python
+      - name: Lint Python
+        run: |
+          pip install pylint
+          pylint src/ > pylint_report.txt || true
+          cat pylint_report.txt
+
+      # SonarCloud scan
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         env:
